@@ -1,2 +1,3 @@
-# Angular-component
-single component for add, edit and view
+# POC
+
+POC for different tasks

@@ -1,0 +1,125 @@
+<div class="">
+    <h1 [hidden]="buttonShow">Add User</h1>
+    <h1 [hidden]="editButton">Edit User</h1>
+    <h1 [hidden]="makeEditButton">User</h1>
+    
+    <div *ngIf="errorShow" class="api-error">{{apiError}}</div>
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-8">
+            <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+                <div class="input-label" *ngIf="isData">
+                    <label>Name</label>
+                    <input class="form-control" formControlName="name" maxlength="30" id="name" [readonly]='nameEdit' value={{item.name}}>
+                    <div *ngIf="submitted && f.name.errors" class="error">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Phone</label>
+                    <input class="form-control" type="number" formControlName="phone"  [readonly]='isReadOnly' value={{item.phone}}>
+                    <div *ngIf="submitted && f.phone.errors" class="error">
+                        <div *ngIf="f.phone.errors.required">Phone is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Email</label>
+                    <input class="form-control" formControlName="email"  [readonly]='emailEdit' value={{item.email}}>
+                    <div *ngIf="submitted && f.email.errors" class="error">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email is not valid</div>
+                    </div>
+                </div>
+
+                 <div class="input-label" *ngIf="isData" [hidden]="!passwordShow" >
+                    <label>Password</label>
+                    <input class="form-control" formControlName="password"  [readonly]='isReadOnly' [hidden]="!passwordShow">
+                    <div *ngIf="submitted && f.password.errors" class="error">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label"  *ngIf="isData">
+                    <label>Designation</label>
+                    <input class="form-control" formControlName="designation"  [readonly]='isReadOnly' value={{item.designation}}>
+                    <div *ngIf="submitted && f.designation.errors" class="error">
+                        <div *ngIf="f.designation.errors.required">Designation is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Alternate Email</label>
+                    <input class="form-control" formControlName="alternateEmail" [readonly]='isReadOnly' value={{item.alternateEmail}}>
+                    <div *ngIf="submitted && f.alternateEmail.errors" class="error">
+                        <div *ngIf="f.alternateEmail.errors.required">Alternate Email is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Alternate Phone</label>
+                    <input class="form-control" formControlName="alternatePhone" [readonly]='isReadOnly' value={{item.alternatePhone}}>
+                    <div *ngIf="submitted && f.alternatePhone.errors" class="error">
+                        <div *ngIf="f.alternatePhone.errors.required">Alternate Phone is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Office Phone</label>
+                    <input class="form-control" formControlName="officePhone" [readonly]='isReadOnly' value={{item.officePhone}}>
+                    <div *ngIf="submitted && f.officePhone.errors" class="error">
+                        <div *ngIf="f.officePhone.errors.required">Office Phone is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Company Name</label>
+                    <input class="form-control" formControlName="companyName" [readonly]='isReadOnly' value={{item.companyName}}>
+                    <div *ngIf="submitted && f.companyName.errors" class="error">
+                        <div *ngIf="f.companyName.errors.required">Company Name is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>User Role</label>
+                    <input class="form-control" formControlName="userRole" [readonly]='isReadOnly' value={{item.userRole}}>
+                    <div *ngIf="submitted && f.userRole.errors" class="error">
+                        <div *ngIf="f.userRole.errors.required">User Role is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Company Id</label>
+                    <input class="form-control" formControlName="companyId" [readonly]='isReadOnly' value={{item.companyId}}>
+                    <div *ngIf="submitted && f.companyId.errors" class="error">
+                        <div *ngIf="f.companyId.errors.required">Company Id is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Office Location</label>
+                    <input class="form-control" formControlName="officeLocation" [readonly]='isReadOnly' value={{item.officeLocation}}>
+                    <div *ngIf="submitted && f.officeLocation.errors" class="error">
+                        <div *ngIf="f.officeLocation.errors.required">Office Location is required</div>
+                    </div>
+                </div>
+
+                <div class="input-label" *ngIf="isData">
+                    <label>Image</label>
+                    <input class="form-control" formControlName="image" [readonly]='isReadOnly' value={{item.image}}>
+                    <div *ngIf="submitted && f.image.errors" class="error">
+                        <div *ngIf="f.image.errors.required">Image is required</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-secondary addUserBtn" [hidden]="buttonShow">Add User</button>
+
+                <button type="submit" class="btn btn-secondary addUserBtn" [hidden]="editButton">Edit User</button>
+
+            </form>
+            <button type="submit" (click)='makeFormEditable()' class="btn btn-secondary addUserBtn" [hidden]="makeEditButton">Edit</button>
+        </div>
+    </div>
+</div>
+<ngx-loading [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: 'true' }" [show]="loading"
+    [template]="customLoadingTemplate"></ngx-loading>

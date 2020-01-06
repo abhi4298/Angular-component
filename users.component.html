@@ -1,0 +1,42 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'User Management'" [icon]="'fa-user'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header text-right"> 
+                    <button class="btn rounded-btn" [routerLink]="['./user']" class='primary'>Add User</button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Designation</th>
+                            <th>Company Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of items; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.phone}}</td>
+                            <td>{{item.designation}}</td>
+                            <td>{{item.companyName}}</td>
+                            <td> <i class="fa-toggle-on" [routerLink]="['./user', item.userId]"> </i> </td>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer pb-0 pt-3">
+                    <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: 'true' }" [show]="loading" [template]="customLoadingTemplate"></ngx-loading>

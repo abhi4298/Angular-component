@@ -1,0 +1,27 @@
+.addUserBtn {
+    margin-top: 10%;
+}
+
+.error {
+    color: red;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label {
+    font-weight: bolder;
+}
+
+.input-label {
+    margin-top: 2%;
+}
+
+.api-error {
+    font-weight: bolder;
+    color: red;
+    font-size: large;
+}
